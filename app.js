@@ -18,12 +18,7 @@ app.get('/master', function(req, res){
 
 
 var server = http.createServer(app);
-  
 
-//documentation on http://www.sitepoint.com/create-multi-user-presentation-reveal-js/ where I pulled the info to get this up says below here io.listen(server);
-//io.sockets.on(...)
-//io.sockets has no on method so it does not work.
-//modifying it below as suggested by Dan Zajdband corrects the problem.
 var sio=io.listen(server);
 sio.on('connection', function (socket) {
   console.log(socket);
