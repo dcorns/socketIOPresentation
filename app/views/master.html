@@ -19,174 +19,56 @@
                 <li>Login into the website</li>
                 <li>Who has heard of socket.io</li>
                 <li>Who has used socket.io</li>
+                <li>Examples site</li>
             </ul>
         </section>
-        <section id="s2">
+        <section>
+            <h1>What is socket.io?</h1>
+            <p class="fragment roll-in">"Socket.io enables real-time bidirectional event-based communications."</p>
+            <p class="fragment fade-in">"It works on every platform, browser or device, focusing equally on reliability and speed"</p>
+            <p class="fragment roll-in">"my definition"</p>
+            <p class="fragment fade-in">"Websocket is a bi-directional and assynchronus communications protocol that that does so without the need for opening multiple HTTP connections (e.g., using
+                XMLHttpRequest or iframes and long polling)."</p>
 
-<button onclick="btnNextClick(this.parentNode.id)">next</button>
-        </section>
-
-        <section>
-            <h1>MongoDB</h1>
-            <h3>A New DataBase Engine For Today's Enviroment</h3>
-        </section>
-        <section>
-            <h1>Common Database Models</h1>
-            <h3>Hierarchical Database model</h3>
-            <h3>Network Database Model</h3>
-            <h3>Relational Database Model</h3>
-            <h3>Object Database Model</h3>
-            <h3>NoSQL or Document Model</h3>
-        </section>
-        <section>
-            <img src="img/HierarchicalModel.png" alt="HierarchicalModel" height="600" width="600">
-        </section>
-        <section>
-            <img src="img/NetworkModel.png" alt="Network Model" height="600" width="600">
-        </section>
-        <section>
-            <img src="img/RelationalModel.png" alt="Relational Model" height="600" width="600">
-        </section>
-        <section>
-            <img src="img/Object-OrientedModel.png" alt="Object-Oriented Model" height="600" width="600">
         </section>
 
         <section>
-            <img src="img/DocumentSchema.jpg" alt="Document Model" height="600" width="600">
+            <h1 >Before Websocket</h1>
+            <span class="fragment fade-in">
+            <span class="fragment fade-out">XMLHttpRequest: "XMLHttpRequest is a JavaScript object that was designed by Microsoft and adopted by Mozilla, Apple, and Google. It's now being standardized in the W3C. It provides an easy way to retrieve data from a URL without having to do a full page refresh. A Web page can update just a part of the page without disrupting what the user is doing.  XMLHttpRequest is used heavily in AJAX programming." The complexity of XMLHttpRequest is why we have Ajax. Learn all about XML... at link</span>
+            </span>
+            <span class="fragment roll-in">
+            <span class="fragment fade-out">
+                Using Iframes is actually a hack that came before XMHttpRequest, you can read about what iframes are actually for at the link.
+            </span></span>
+            <span class="fragment roll-in"><span class="fragment fade-out">
+            Long polling is implemented by using a recursive ajax request shown here. For a decent overview of polling see link.
+        </span></span>
         </section>
         <section>
-            <h1>MongoDB Foundation</h1>
-            <h3>Document Model</h3>
-            <h3>Written in C#</h3>
-            <h3>BSON File System</h3>
+            <h1>The Websocket Way</h1>
+            <h3><a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a></h3>
+                    <span class="fragment fade-in">
+                    <h3>HTTP Upgrade Header added in spec 1.1</h3>
+                    <h3>It allows the client to specify additional protocols</h3>
+                    <h3>Currently all major browsers have native support</h3>
+                        </span>
         </section>
         <section>
-            <h1>Good O'le Database</h1>
-            <h3>Rigid schema</h3>
-            <h3>Relational</h3>
-            <h3>Designed originally for single server<h3>
-                <h3>Data Schema drives the development<h3>
+            <h1>Dependencies</h1>
+            <h3>Socket.io</h3>
+            <h3>Engine.io</h3>
+            <h3>Websocket</h3>
         </section>
         <section>
-            <img src="img/AccessPathModeling.jpg" alt="Object-Oriented Model" height="600" width="600">
-        </section>
-        <section>
-            <h1>Mongo is Better for the developer</h1>
-            <h3>No Data Mapping Layer Required</h3>
-            <h3>Data is stored in key value pairs</h3>
-            <h3>Data transfered as objects</h3>
-            <h3>Aplication determines the schema</h3>
-            <h3>No SQL statements<h3>
-        </section>
-        <section>
-            <h1>Mongo Is Often Better for Everyone</h1>
-            <h3>Embedded data model reduces I/O activity</h3>
-            <h3>Very Flexable Indexes</h3>
-            <h3>Querries can include keys from embedded documents and arrays</h3>
-            <h3>Automatic Scaling</h3>
-            <h3>Sharding-Data Aggregation</h3>
-            <h3>Replication and Failover</h3>
-        </section>
-        <section>
-            <h1>Modelling Data</h1>
-            <h3>Follow the Access Path</h3>
-            <h3>No Designing of tables, just start writing the application</h3>
-            <h3>Creating the object designs the schema</h3>
-            <h3>Embedded Document Structures</h3>
-            <h3>16MB Document Size Limit</h3>
-            <h3>Objects, Arrays, Strings, Object Arrays</h3>
-        </section>
-        <section>
-            <section class=wide>
-                <img src="img/DocumentvsTable.jpg" alt="Relational_Schema" height="600" width="600">
-            </section>
-        </section>
-        <section>
-            <h1>The Mongo Document</h1>
-            <h3>Foundation of Mongo Data Storage</h3>
-            <h3>Documents Can Contain Properties</h3>
-            <h3>Documents Can Contain Objects</h3>
-            <h3>Documents Can Contain Arrays</h3>
-            <h3>Documents Can Contain Object Arrays</h3>
-            <h3>Documents Can Contain Other Documents</h3>
+            <h1>Version 1.0 vrs 0.9</h1>
+            <h3>Stability many issues if you watch the repository, lots of emails</h3>
+            <p>io.use() You can give a Socket.io server arbitrary functions via io.use() that are run when a socket is created.</p>
+            <h3>Request</h3>
+            <h3>Response</h3>
+            <h3>like a cb radio</h3>
         </section>
 
-        <section class=wide>
-            <h1>Relational Schema</h1>
-            <img src="img/RelationalSchema.jpg" alt="Relational_Schema" height="600" width="600">
-        </section>
-        <section>
-            <h1>Mongo Schema</h1>
-            <img src="img/DocumentSchema.jpg" alt="Document_Schema" height="600" width="600">
-        </section>
-        <section>
-            <h1>Starting Your Engines</h1>
-            <h3>mongod (starts the DB)<h3>
-                <h3>mongo (starts the administrative shell)<h3>
-                    <h4>Make sure to use another Terminal</h4>
-                    <h3>db (show current db connection)<h3>
-                        <h4>Should return test on new installs</h4>
-                        <h3>show dbs (see available databases)</h3>
-                        <h3>use < dbname > (connects to dbname)</h3>
-        </section>
-        <section>
-            <h1>Basic CRUD</h1>
-            <h3>DB creation: use <i>dbname</i></h3>
-            <h3>db.products.insert( { item: "card", qty: 15 } )<h3>
-                <h5>If the collection does not exist, then the insert() method will create the collection.</h5>
-                <h5>If the document does not specify an _id field, then MongoDB will add the _id field and assign a unique ObjectId for the document before inserting. Most drivers create an ObjectId and insert the _id field, but the mongod will create and populate the _id if the driver or application does not.</h5>
-                <h5>If the document specifies a new field, then the insert() method inserts the document with the new field. This requires no changes to the data model for the collection or the existing documents.</h5>
-        </section>
-        <section>
-            <h1>Basic CRUD</h1>
-            <h3>db.collection.find(<criteria>, <projection>)</h3>
-            <h3>db.products.find()</h3>
-            <h4>A cursor to the documents that match the query criteria. When the find() method “returns documents,” the method is actually returning a cursor to the documents.<h4>
-                <h4>If the projection argument is specified, the matching documents contain only the projection fields and the _id field. You can optionally exclude the _id field.<h4>
-                    <h4>Executing find() directly in the mongo shell automatically iterates the cursor to display up to the first 20 documents. Type it to continue iteration.</h4>
-                    <h4>To access the returned documents with a driver, use the appropriate cursor handling mechanism for the driver language.</h4>
-        </section>
-        <section>
-            <h1>Basic CRUD</h1>
-            <h3>db.collection.update(query, update, options)</h3>
-            <h3>db.products.update({item: "card" },{$set: { qty: 18 }})<h3>
-                <h4>The update() method takes the following parameters:</h4>
-                <h5>query---The selection criteria for the update. Use the same query selectors as used in the find() method.<h5>
-                    <h5>update---The modifications to apply. For details see Update Parameter.<h5>
-
-        </section>
-        <section>
-            <h1>Basic CRUD update continued</h1>
-            <h3>db.collection.update(query, update, options)</h3>
-            <h5>upsert---Optional. If set to true, creates a new document when no document matches the query criteria. The default value is false, which does not insert a new document when no match is found. The syntax for this parameter depends on the MongoDB version. See Upsert Parameter.</h5>
-            <h5>multi---Optional. If set to true, updates multiple documents that meet the query criteria. If set to false, updates one document. The default value is false. For additional information, see Multi Parameter.</h5>
-            <h5>To update fields in subdocuments, use dot notation.</h5>
-            <h5>The update() method can modify the name of a field using the $rename operator.</h5>
-        </section>
-        <section>
-            <h4>db.products.remove()<h4>
-                <h4>db.products.drop()</h4>
-                <h4>db.dropDatabase()</h4>
-        </section>
-
-        <section>
-            <h1>Deep Dive</h1>
-            <h3>Aggregation</h3>
-            <h3>Advanced Query Operators<h3>
-                <h3>Indexing</h3>
-                <h3>Security</h3>
-                <h3>docs.mongodb.org!!!</h3>
-        </section>
-        <section>
-            <h1>Conclusion</h1>
-            <h4>Server-side JavaScript</h4>
-            <h5>http://docs.mongodb.org/manual/core/server-side-javascript/</h5>
-            <h4>Mongo Shell Quick Reverence<h4>
-                <h5>http://docs.mongodb.org/manual/reference/mongo-shell/</h5>
-                <h4>Bonus for reading last slide</h4>
-                <h5>var objinfo= Object.keys(obj)</h5>
-
-        </section>
 
 
 

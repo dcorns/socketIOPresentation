@@ -12,7 +12,6 @@
     <body>
         <div class="reveal">
             <div class="slides">
-
                 <section>
                     <h1>SOCKET.IO</h1>
                     <h2>http://10.98.110.134:3000/</h2>
@@ -20,20 +19,47 @@
                 </section>
                 <section id="s2">
                 <h1>What is socket.io?</h1>
-                    <h2>"Socket.io enables real-time bidirectional event-based communications."</h2>
-                    <h3>"It works on every platform, browser or device, focusing equally on reliability and speed"</h3>
+                    <p class="fragment roll-in">"Socket.io enables real-time bidirectional event-based communications."</p>
+                    <p class="fragment fade-in">"It works on every platform, browser or device, focusing equally on reliability and speed"</p>
+                    <p class="fragment fade-in">Socket.io is an abstraction layer for implimenting the websocket protocol</p>
+                    <a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a>
                 </section>
 
                 <section>
-                    <h1>What is it really?</h1>
-                    <h3>Websocket</h3>
-                    <h3>Engine.io</h3>
-                    <h3>Socket.io</h3>
+                    <h1 >Before Websocket</h1>
+                    <h3 class="fragment roll-in">XMLHttpRequest</h3>
+                    <a class="fragment fade-in" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">XMLHttpRequest details</a>
+                    <h3 class="fragment roll-in">iframes</h3>
+                    <a class="fragment fade-in" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">Using Iframes</a>
+                    <p class="fragment roll-in">long polling</br>(function poll(){</br>
+                        $.ajax({</br> url: "server", success: function(data){</br>
+                        //Update your dashboard gauge
+                        salesGauge.setValue(data.value);}</br>
+                        ,dataType: "json", complete: poll, timeout: 30000 });})();</p>
+                    <a class="fragment fade-in" href="http://techoctave.com/c7/posts/60-simple-long-polling-example-with-javascript-and-jquery">Polling explained</a>
                 </section>
+
                 <section>
-                    <h1>Normal HTTP Comunications Cycle</h1>
-                    <h3>Request</h3>
-                    <h3>Response</h3>
+                    <h1>The Websocket Way</h1>
+                    <h3><a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a></h3>
+                    <span class="fragment fade-in">
+                    <h3>HTTP Upgrade Header added in spec 1.1</h3>
+                    <h3>It allows the client to specify additional protocols</h3>
+                    <h3>Currently all major browsers have native support</h3>
+                        </span>
+                </section>
+
+                <section>
+                    <h1>Dependencies</h1>
+                    <h3>Socket.io</h3>
+                    <h3>Engine.io</h3>
+                    <h3>Websocket</h3>
+                </section>
+
+                <section>
+                    <h1>Version 1.0 vrs 0.9</h1>
+                    <h3>Stability</h3>
+                    <h3>io.use()</h3>
                     <h3>Request</h3>
                     <h3>Response</h3>
                     <h3>like a cb radio</h3>
@@ -43,20 +69,17 @@
                     <h3>Polling</h3>
                     <h3>Long Polling</h3>
                     <h3>XML, ActiveX to keep connections open</h3>
-                    <h3>Object Database Model</h3>
-                    <h3>NoSQL or Document Model</h3>
                 </section>
                 <section>
                     <h1>Websocket Approach</h1>
-                    <h3>HTTP Upgrade Header added in spec 1.1</h3>
-                    <h3>It allows the client to specify additional protocols</h3>
-                    <h3>Google Chrome currently only browser with native support</h3>
+
 
                 </section>
                 <section>
                     <h1>Engine.IO</h1>
                     <h3>"the implementation of transport-based cross-browser/cross-device bi-directional communication layer for Socket.IO"</h3>
                     <h3>Determines the best transport for given device or browser</h3>
+                    <h3>Soon to be remove from socket.io</h3>
                 </section>
                 <section>
                     <h1>So Again what is socket.io really?</h1>
@@ -64,12 +87,19 @@
                     <h3>Abstraction</h3>
                     <h3>Complexity</h3>
                     <h3>Less Code</h3>
-
                 </section>
                 <section>
                     <h1>So for what is it good?</h1>
                     <h3>Anything Realtime!</h3>
-
+                </section>
+                <section>
+                    <h1>Examples</h1>
+                    <h4><a href="https://github.com/dcorns/exploreSocketIO">clone exploreSocketIO</a></h4>
+                    <h3>nodeOnly</h3>
+                    <h3>nodeExpress</h3>
+                    <h3>areYouDeaf</h3>
+                    <h3>shutupAlready</h3>
+                    <h3>realtimeUpdate</h3>
                 </section>
                 <section>
                     <h1>How to use</h1>
@@ -91,21 +121,39 @@
                     <h3>Custom Event</h3>
                 </section>
                 <section>
-                    <h1>Examples</h1>
-                    <h3>Node Only</h3>
-                    <h3>Node Express</h3>
-                    <h3>Back and Forth</h3>
-                    <h3>I'm telling you</h3>
-                    <h3>Trivial Game</h3>
+                    <h1>Server API</h1>
+                    <h3>Server Object</h3>
+                    <h3>Namespace</h3>
+                    <h3>Socket</h3>
+                    <h3>Client</h3>
+                </section>
+                <section>
+                    <h1>Server Object</h1>
+                    <h3>serveClient</h3>
+                    <h3>path</h3>
+                    <h3>Custom Event</h3>
+                </section>
+                <section>
+                    <h1>Client API</h1>
+                    <h3>IO</h3>
+                    <h3>Manager</h3>
+                    <h3>Socket</h3>
+                </section>
+
+                <section>
+                    <h1>Client</h1>
+                    <h3>Client</h3>
+                    <h3>Disconnected</h3>
+                    <h3>Custom Event</h3>
+                </section>
+                <section>
+                    <h1>NameSpacing</h1>
+                    <h3>Default /</h3>
+                    <h3>Custom Namespacing</h3>
+                    <h3>Custom Event</h3>
                 </section>
                 <section>
                     <h1>Lab: Chat Room</h1>
-                    <h3>Embedded data model reduces I/O activity</h3>
-                    <h3>Very Flexable Indexes</h3>
-                    <h3>Querries can include keys from embedded documents and arrays</h3>
-                    <h3>Automatic Scaling</h3>
-                    <h3>Sharding-Data Aggregation</h3>
-                    <h3>Replication and Failover</h3>
                 </section>
 
                 
