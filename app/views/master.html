@@ -27,7 +27,7 @@
             <p class="fragment roll-in">"Socket.io enables real-time bidirectional event-based communications."</p>
             <p class="fragment fade-in">"It works on every platform, browser or device, focusing equally on reliability and speed"</p>
             <p class="fragment roll-in">"my definition"</p>
-            <p class="fragment fade-in">"Websocket is a bi-directional and assynchronus communications protocol that that does so without the need for opening multiple HTTP connections (e.g., using
+            <p class="fragment fade-in">"Websocket is a bi-directional and assynchronus communications protocol that that does so without the need for opening multiple HTTP connections, and a little extra sugar (e.g., using
                 XMLHttpRequest or iframes and long polling)."</p>
 
         </section>
@@ -48,30 +48,60 @@
         <section>
             <h1>The Websocket Way</h1>
             <h3><a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a></h3>
-                    <span class="fragment fade-in">
-                    <h3>HTTP Upgrade Header added in spec 1.1</h3>
-                    <h3>It allows the client to specify additional protocols</h3>
-                    <h3>Currently all major browsers have native support</h3>
-                        </span>
+            <p class="fragment roll-in">HTTP Handshake HTTP Upgrade Header added in spec 1.1 It allows the client to specify additional protocols</p>
+            <p class="fragment roll-in">Frames Once the handshake is over websocket takes over allowing for true bi-directional communication using tcp frames. Client or server can send a frame at anytime, can be shared over same port as http, but does not have to be</p>
         </section>
         <section>
             <h1>Dependencies</h1>
-            <h3>Socket.io</h3>
-            <h3>Engine.io</h3>
-            <h3>Websocket</h3>
+            <h3 class="fragment roll-in">Engine.io "the implementation of transport-based cross-browser/cross-device bi-directional communication layer for Socket.IO"
+                Determines the best transport for given device or browser, fallback if no websocket
+                Soon to be remove from socket.io</h3>
+            <h3 class="fragment roll-in">Websocket</h3>
         </section>
         <section>
             <h1>Version 1.0 vrs 0.9</h1>
-            <h3>Stability many issues if you watch the repository, lots of emails</h3>
+            <p>Stability many issues if you watch the repository, lots of emails</p>
             <p>io.use() You can give a Socket.io server arbitrary functions via io.use() that are run when a socket is created.</p>
-            <h3>Request</h3>
-            <h3>Response</h3>
-            <h3>like a cb radio</h3>
+            <p>engine.IO -If WebSocket is the only transport you want to support moving forward, Engine.IO (with all its browser hacks and workarounds) can be seamlessly removed.</p>
+            <p>Binary support - The main issue was that if we had modeled our binary support after the WebSocket API, its usefulness would have been fairly limited. WebSocket requires that you put your Socket either into “string mode” or “binary mode”This is good for a low-level API, which is why Engine.IO now supports it, but application developers most likely don’t want to send only blobs, or encode everything as a blob manually prior to sending it out. Socket.IO now supports emitting Buffer (from Node.JS), Blob, ArrayBuffer and even File, as part of any datastructure</p>
+            <p>automated testing- Every commit to the Socket.IO codebase now triggers a testing matrix totaling to 25 browsers, including Android and iOS. We accomplish this by having make test seamlessly set up a reverse tunnel to ephemeral ports in your computer (thus making it accessible from the outside world), and have them execute on the Sauce Labs cloud, which is in charge of virtualizing and executing browsers on all the environments we care about.</p>
         </section>
+        <section>
+            <h1>Version 1.0 vrs 0.9</h1>
+            <p>Scalability- We simplified the approach towards rooms and multi-node scalability dramatically. Instead of storing and/or replicating data across nodes, Socket.IO is now only concerned with passing events around. If you want to scale out Socket.IO to multiple nodes, it now comes down to two simple steps:Turn on sticky load balancing (for example by origin IP address). This ensures that long-polling connections for example always route requests to the same node where buffers of messages could be stored. Implement the socket.io-redis adapter. var io = require('socket.io')(3000); var redis = require('socket.io-redis'); io.adapter(redis({ host: 'localhost', port: 6379 }));
+ We have deprecated the Socket#set and Socket#get APIs. Packets now simply get encoded and distributed to other nodes whenever you broadcast, and we don’t deal with storage.  This leads directly into our next goal: integration with other backends.</p>
+            <p>Integration -To that end we’re introducing the socket.io-emitter project which hooks into socket.io-redis to easily allow you to emit events to browsers from anywhere: var io = require('socket.io-emitter')();setInterval(function(){io.emit('time', new Date);}, 5000);</p>
+            <p>Debugging -Socket.IO is now completely instrumented by a minimalistic yet tremendously powerful utility called debug by TJ Holowaychuk.In the past, the Socket.IO server would default to logging everything out to the console. This turned out to be annoyingly verbose for many users (although extremely useful for others), and violates the Rule of Silence of the Unix Philosophy:Rule of Silence Developers should design programs so that they do not print unnecessary output. This rule aims to allow other programs and developers to pick out the information they need from a program’s output without having to parse verbosity. The basic idea is that each module used by Socket.IO provides different debugging scopes that give you insight into the internals. By default, all output is suppressed, and you can opt into seeing messages by supplying the DEBUG env variable (Node.JS) or the localStorage.debug property (Browsers).</p>
+            <p>CDN Delivery -One of the best decisions we made early on was that implementing a Socket.IO server would not only give you access to the realtime protocol, but Socket.IO itself would also serve the client. Normally, all you have to do is to include a snippet like this: script src="/socket.io/socket.io.js"/script> If you want to optimize access to the client by serving it near your users, provide the maximum level of gzip compression (thanks to Google’s zopfli and proper support for caching, you can now use our CDN. It’s free, forever, and has built-in SSL support:     script src="https://cdn.socket.io/socket.io-1.0.0.js">/script></p>
+            <p>Socket.IO v1.0 -endepth information on V1.0 and the vision of socket.io</p>
 
-
-
-
+        </section>
+        <section>
+            <h1>So Again what is socket.io really?</h1>
+            <p>Sugar</p>
+            <p>Abstraction</p>
+            <p>Complexity</p>
+            <p>Less Code</p>
+        </section>
+        <section>
+            <h4 class="fragment fade-in">A simple means of implementing the websocket IP protocol over TCP for true bidirectional, asynchronus communications between client and server with a little extra sugar</h4>
+        </section>
+        <section>
+            <h1>So for what is it good?</h1>
+            <h3 class="fragment roll-in">Anything Realtime!</h3>
+            <h3 class="fragment roll-in">Client or Server - once established, communications can be initiated from either end</h3>
+        </section>
+        <section>
+            <h1>Examples</h1>
+            <h4><a href="https://github.com/dcorns/exploreSocketIO">clone exploreSocketIO</a></h4>
+            <h3>nodeOnly</h3>
+            <h3>nodeExpress</h3>
+            <h3>nodeKoa</h3>
+            <h3>areYouDeaf</h3>
+            <h3>shutupAlready</h3>
+            <h3>realtimeUpdate</h3>
+            <h3>nameSpace</h3>
+        </section>
     </div>
 </div>
 <script src="components/reveal.js/js/reveal.min.js"></script>
