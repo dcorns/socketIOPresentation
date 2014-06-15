@@ -97,10 +97,57 @@
             <h3>nodeOnly</h3>
             <h3>nodeExpress</h3>
             <h3>nodeKoa</h3>
-            <h3>areYouDeaf</h3>
-            <h3>shutupAlready</h3>
-            <h3>realtimeUpdate</h3>
-            <h3>nameSpace</h3>
+            <p>areYouDeaf -using events on the server and client side to communicate server side rendering</p>
+            <p>shutupAlready -using events to stretch functions across endpoints</p>
+            <h3>realtimeUpdate -demonstrates realtime interaction between clients of the server</h3>
+            <h3>nameSpace -using name spacing to separate communications</h3>
+        </section>
+        <section>
+            <h1>Server Setup</h1>
+            <h3>var app = require('express')();</h3>
+            <h3>var server = require('http').Server(app);</h3>
+            <h3>var io = require('socket.io')(server);</h3>
+            <h3>server.listen(<i>port</i>)</h3>
+            <h3>app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
+        </section>
+        <section>
+            <h1>Client Setup</h1>
+            <h3>script src="/socket.io/socket.io.js"</h3>
+            <h3>script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
+            <h3>var socket = io(); Here is the client</h3>
+            <h3>var socket = io(<i>url</i>)</h3>
+        </section>
+        <section>
+            <p>Connection Proccess -excluding transport negotiation as most browsers now support web sockets</p>
+            <h3>Client sends GET request </h3>
+            <h3>Server sends script</h3>
+            <h3>Handshake</h3>
+            <h3>Websocket Open</h3>
+        </section>
+        <section>
+            <h1>Events</h1>
+            <p>error -on an error parameter {error data}</p>
+            <p>connect</p>
+            <p>connection</p>
+            <p>message</p>
+            <p>disconnected</p>
+            <p>Custom Events</p>
+        </section>
+        <section>
+            <h1>Events Listener/Handler</h1>
+            <p>error -on an error parameter {error data}</p>
+            <p>connect</p>
+            <p>connection</p>
+            <p>message</p>
+            <p>disconnected</p>
+            <p>Custom Events</p>
+        </section>
+        <section>
+            <h1>Events Listener/Handler</h1>
+            <h3>on</h3>
+            <h4>socket.on('<i>eventname</i>',function(){</br>
+                });
+            </h4>
         </section>
     </div>
 </div>

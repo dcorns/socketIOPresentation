@@ -94,23 +94,49 @@
                     <h3>nameSpace</h3>
                 </section>
                 <section>
-                    <h1>How to use</h1>
-                    <h3>Server</h3>
-                    <h3>Client</h3>
-                    <h3>emit</h3>
-                    <h3>on</h3>
+                    <h1>Server Setup</h1>
+                    <h3>var app = require('express')();</h3>
+                    <h3>var server = require('http').Server(app);</h3>
+                    <h3>var io = require('socket.io')(server);</h3>
+                    <h3>server.listen(<i>port</i>)</h3>
+                    <h3>app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
                 </section>
                 <section>
-                    <h1>Establishing The Connection</h1>
-                    <h3>Server Code</h3>
-                    <h3>Client Code</h3>
+                    <h1>Client Setup</h1>
+                    <h3>script src="/socket.io/socket.io.js"</h3>
+                    <h3>script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
+                    <h3>var socket = io();</h3>
+                    <h3>var socket = io(<i>url</i>)</h3>
                 </section>
-
+                <section>
+                    <h1>Connection Proccess</h1>
+                    <h3>Client sends GET request</h3>
+                    <h3>Server sends script</h3>
+                    <h3>Handshake</h3>
+                    <h3>Websocket Open</h3>
+                </section>
                 <section>
                     <h1>Events</h1>
-                    <h3>Connected</h3>
-                    <h3>Disconnected</h3>
-                    <h3>Custom Event</h3>
+                    <h3>error</h3>
+                    <h3>connect</h3>
+                    <h3>connection</h3>
+                    <h3>disconnected</h3>
+                    <h3>Custom Events</h3>
+                </section>
+                <section>
+                    <h1>Events Listener/Handler</h1>
+                    <h3>on</h3>
+                    <h4>socket.on('<i>eventname</i>',function(){</br>
+                    });
+                    </h4>
+                </section>
+                <section>
+                    <h1>Custom Events</h1>
+                    <h3>emit</h3>
+                    <h4>socket.emit('<i>eventname</i>',{});
+                    </h4>
+                    <h3>broadcast</h3>
+                    <h4>socket.broadcast.emit('eventname',{});</h4>
                 </section>
                 <section>
                     <h1>Server API</h1>
