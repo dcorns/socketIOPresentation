@@ -27,7 +27,7 @@
             <p class="fragment roll-in">"Socket.io enables real-time bidirectional event-based communications."</p>
             <p class="fragment fade-in">"It works on every platform, browser or device, focusing equally on reliability and speed"</p>
             <p class="fragment roll-in">"my definition"</p>
-            <p class="fragment fade-in">"Websocket is a bi-directional and assynchronus communications protocol that that does so without the need for opening multiple HTTP connections, and a little extra sugar (e.g., using
+            <p class="fragment fade-in">"Websocket is a bi-directional and assynchronus communications protocol that does so without the need for opening multiple HTTP connections (e.g., using
                 XMLHttpRequest or iframes and long polling)."</p>
 
         </section>
@@ -35,15 +35,18 @@
         <section>
             <h1 >Before Websocket</h1>
             <span class="fragment fade-in">
-            <span class="fragment fade-out">XMLHttpRequest: "XMLHttpRequest is a JavaScript object that was designed by Microsoft and adopted by Mozilla, Apple, and Google. It's now being standardized in the W3C. It provides an easy way to retrieve data from a URL without having to do a full page refresh. A Web page can update just a part of the page without disrupting what the user is doing.  XMLHttpRequest is used heavily in AJAX programming." The complexity of XMLHttpRequest is why we have Ajax. Learn all about XML... at link</span>
+            <span class="fragment fade-out">XMLHttpRequest: "XMLHttpRequest is a JavaScript object that was designed by Microsoft and adopted by Mozilla, Apple, and Google. It's now being standardized in the W3C. It provides an easy way to retrieve data from a URL without having to do a full page refresh. XMLHttpRequest is used heavily in AJAX The complexity of XMLHttpRequest is why we have Ajax. Learn all about XML... at link</span>
             </span>
             <span class="fragment roll-in">
             <span class="fragment fade-out">
                 Using Iframes is actually a hack that came before XMHttpRequest, you can read about what iframes are actually for at the link.
             </span></span>
             <span class="fragment roll-in"><span class="fragment fade-out">
-            Long polling is implemented by using a recursive ajax request shown here. For a decent overview of polling see link.
+            Long polling is implemented by using a recursive ajax request. For a decent overview of polling see link.
         </span></span>
+        </section>
+        <section>
+            long polling example
         </section>
         <section>
             <h1>The Websocket Way</h1>
@@ -52,38 +55,36 @@
             <p class="fragment roll-in">Frames Once the handshake is over websocket takes over allowing for true bi-directional communication using tcp frames. Client or server can send a frame at anytime, can be shared over same port as http, but does not have to be</p>
         </section>
         <section>
-            <h1>Dependencies</h1>
+            <h1>Engine.IO</h1>
             <h3 class="fragment roll-in">Engine.io "the implementation of transport-based cross-browser/cross-device bi-directional communication layer for Socket.IO"
                 Determines the best transport for given device or browser, fallback if no websocket
-                Soon to be remove from socket.io</h3>
-            <h3 class="fragment roll-in">Websocket</h3>
+                can be removed from v1.0 plus</h3>
+        </section>
+        <section>
+            <h1>Version 1.0x vrs 0.9</h1>
+            <p class="fragment roll-in">Stability many issues if you watch the repository, lots of emails</p>
+            <p class="fragment roll-in">io.use() You can give a Socket.io server arbitrary functions via io.use() that are run when a socket is created.</p>
+            <p class="fragment roll-in">engine.IO -If WebSocket is the only transport you want to support moving forward, Engine.IO (with all its browser hacks and workarounds) can be seamlessly removed.</p>
+            <p class="fragment roll-in">Binary support -  Socket.IO now supports emitting Buffer (from Node.JS), Blob, ArrayBuffer and even File, as part of any datastructure</p>
+            <p class="fragment roll-in">automated testing- Every commit to the Socket.IO codebase now triggers a testing matrix totaling to 25 browsers, including Android and iOS. </p>
         </section>
         <section>
             <h1>Version 1.0 vrs 0.9</h1>
-            <p>Stability many issues if you watch the repository, lots of emails</p>
-            <p>io.use() You can give a Socket.io server arbitrary functions via io.use() that are run when a socket is created.</p>
-            <p>engine.IO -If WebSocket is the only transport you want to support moving forward, Engine.IO (with all its browser hacks and workarounds) can be seamlessly removed.</p>
-            <p>Binary support - The main issue was that if we had modeled our binary support after the WebSocket API, its usefulness would have been fairly limited. WebSocket requires that you put your Socket either into “string mode” or “binary mode”This is good for a low-level API, which is why Engine.IO now supports it, but application developers most likely don’t want to send only blobs, or encode everything as a blob manually prior to sending it out. Socket.IO now supports emitting Buffer (from Node.JS), Blob, ArrayBuffer and even File, as part of any datastructure</p>
-            <p>automated testing- Every commit to the Socket.IO codebase now triggers a testing matrix totaling to 25 browsers, including Android and iOS. We accomplish this by having make test seamlessly set up a reverse tunnel to ephemeral ports in your computer (thus making it accessible from the outside world), and have them execute on the Sauce Labs cloud, which is in charge of virtualizing and executing browsers on all the environments we care about.</p>
-        </section>
-        <section>
-            <h1>Version 1.0 vrs 0.9</h1>
-            <p>Scalability- We simplified the approach towards rooms and multi-node scalability dramatically. Instead of storing and/or replicating data across nodes, Socket.IO is now only concerned with passing events around. If you want to scale out Socket.IO to multiple nodes, it now comes down to two simple steps:Turn on sticky load balancing (for example by origin IP address). This ensures that long-polling connections for example always route requests to the same node where buffers of messages could be stored. Implement the socket.io-redis adapter. var io = require('socket.io')(3000); var redis = require('socket.io-redis'); io.adapter(redis({ host: 'localhost', port: 6379 }));
- We have deprecated the Socket#set and Socket#get APIs. Packets now simply get encoded and distributed to other nodes whenever you broadcast, and we don’t deal with storage.  This leads directly into our next goal: integration with other backends.</p>
-            <p>Integration -To that end we’re introducing the socket.io-emitter project which hooks into socket.io-redis to easily allow you to emit events to browsers from anywhere: var io = require('socket.io-emitter')();setInterval(function(){io.emit('time', new Date);}, 5000);</p>
-            <p>Debugging -Socket.IO is now completely instrumented by a minimalistic yet tremendously powerful utility called debug by TJ Holowaychuk.In the past, the Socket.IO server would default to logging everything out to the console. This turned out to be annoyingly verbose for many users (although extremely useful for others), and violates the Rule of Silence of the Unix Philosophy:Rule of Silence Developers should design programs so that they do not print unnecessary output. This rule aims to allow other programs and developers to pick out the information they need from a program’s output without having to parse verbosity. The basic idea is that each module used by Socket.IO provides different debugging scopes that give you insight into the internals. By default, all output is suppressed, and you can opt into seeing messages by supplying the DEBUG env variable (Node.JS) or the localStorage.debug property (Browsers).</p>
-            <p>CDN Delivery -One of the best decisions we made early on was that implementing a Socket.IO server would not only give you access to the realtime protocol, but Socket.IO itself would also serve the client. Normally, all you have to do is to include a snippet like this: script src="/socket.io/socket.io.js"/script> If you want to optimize access to the client by serving it near your users, provide the maximum level of gzip compression (thanks to Google’s zopfli and proper support for caching, you can now use our CDN. It’s free, forever, and has built-in SSL support:     script src="https://cdn.socket.io/socket.io-1.0.0.js">/script></p>
-            <p>Socket.IO v1.0 -endepth information on V1.0 and the vision of socket.io</p>
+            <p class="fragment roll-in">Scalability- Instead of storing and/or replicating data across nodes, Socket.IO is now only concerned with passing events around. We have deprecated the Socket#set and Socket#get APIs. Packets now simply get encoded and distributed to other nodes whenever you broadcast, and we don’t deal with storage.</p>
+            <p class="fragment roll-in">Integration -the socket.io-emitter project which hooks into socket.io-redis to easily allow you to emit events to browsers from anywhere: var io = require('socket.io-emitter')();setInterval(function(){io.emit('time', new Date);}, 5000);</p>
+            <p class="fragment roll-in">Debugging -Socket.IO is now completely instrumented in debug by TJ Holowaychuk.In the past, the Socket.IO server would default to logging everything out to the console. Now suppressed but you can opt into seeing messages by supplying the DEBUG env variable (Node.JS) or the localStorage.debug property (Browsers). Or verbose it by DEBUG=* node app</p>
+            <p class="fragment roll-in">CDN Delivery -(thanks to Google’s zopfli and proper support for caching, you can now use our CDN. It’s free, forever, and has built-in SSL support:     script src="https://cdn.socket.io/socket.io-1.0.0.js">/script></p>
+            <p class="fragment roll-in">Socket.IO v1.0 -endepth information on V1.0 and the vision of socket.io</p>
 
         </section>
         <section>
             <h1>So Again what is socket.io really?</h1>
-            <p>Sugar</p>
-            <p>Abstraction</p>
-            <p>Complexity</p>
-            <p>Less Code</p>
+            <p class="fragment roll-in">Sugar</p>
+            <p class="fragment roll-in">Abstraction</p>
+            <p class="fragment roll-in">Complexity</p>
+            <p class="fragment roll-in">Less Code</p>
         </section>
-        <section>
+        <section >
             <h4 class="fragment fade-in">A simple means of implementing the websocket IP protocol over TCP for true bidirectional, asynchronus communications between client and server with a little extra sugar</h4>
         </section>
         <section>
@@ -94,35 +95,35 @@
         <section>
             <h1>Examples</h1>
             <h4><a href="https://github.com/dcorns/exploreSocketIO">clone exploreSocketIO</a></h4>
-            <h3>nodeOnly</h3>
-            <h3>nodeExpress</h3>
-            <h3>nodeKoa</h3>
+            <p>nodeOnly</p>
+            <p>nodeExpress</p>
             <p>areYouDeaf -using events on the server and client side to communicate server side rendering</p>
             <p>shutupAlready -using events to stretch functions across endpoints</p>
-            <h3>realtimeUpdate -demonstrates realtime interaction between clients of the server</h3>
-            <h3>nameSpace -using name spacing to separate communications</h3>
+            <p>realtimeUpdate -demonstrates realtime interaction between clients of the server</p>
+            <p>nameSpace -using name spacing to separate communications</p>
+            <p>bievents - using builtin events</p>
         </section>
         <section>
             <h1>Server Setup</h1>
-            <h3>var app = require('express')();</h3>
-            <h3>var server = require('http').Server(app);</h3>
-            <h3>var io = require('socket.io')(server);</h3>
-            <h3>server.listen(<i>port</i>)</h3>
-            <h3>app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
+            <h3 class="fragment roll-in">var app = require('express')();</h3>
+            <h3 class="fragment roll-in">var server = require('http').Server(app);</h3>
+            <h3 class="fragment roll-in">var io = require('socket.io')(server);</h3>
+            <h3 class="fragment roll-in">server.listen(<i>port</i>)</h3>
+            <h3 class="fragment roll-in">app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
         </section>
         <section>
             <h1>Client Setup</h1>
-            <h3>script src="/socket.io/socket.io.js"</h3>
-            <h3>script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
-            <h3>var socket = io(); Here is the client</h3>
-            <h3>var socket = io(<i>url</i>)</h3>
+            <h3 class="fragment roll-in">script src="/socket.io/socket.io.js"</h3>
+            <h3 class="fragment roll-in">script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
+            <h3 class="fragment roll-in">var socket = io(); Here is the client</h3>
+            <h3 class="fragment roll-in">var socket = io(<i>url</i>)</h3>
         </section>
         <section>
             <p>Connection Proccess -excluding transport negotiation as most browsers now support web sockets</p>
-            <h3>Client sends GET request </h3>
-            <h3>Server sends script</h3>
-            <h3>Handshake</h3>
-            <h3>Websocket Open</h3>
+            <h3 class="fragment roll-in">Client sends GET request </h3>
+            <h3 class="fragment roll-in">Server sends script</h3>
+            <h3 class="fragment roll-in">Handshake</h3>
+            <h3 class="fragment roll-in">Websocket Open</h3>
         </section>
         <section>
             <h1>Events</h1>
@@ -145,8 +146,17 @@
             <h3>emit</h3>
             <h4>socket.emit('<i>eventname</i>',{});
             </h4>
-
             <h4>socket.broadcast.emit('eventname',{});</h4>
+        </section>
+        <section>
+            <h1>NameSpacing</h1>
+            <h3>Default /</h3>
+            <h3>Custom Namespacing</h3>
+        </section>
+        <section>
+            <h1>Lab: Chat Room</h1>
+            <a class="fragment fade-in" href="https://github.com/dcorns/socketIOPresentaion">This presentation was done using express, reveal and socket.io</a>
+            <a class="fragment roll-in" href="hrrps://github.com/dcorns/simplechat">Working Chat Example</a>
         </section>
     </div>
 </div>
