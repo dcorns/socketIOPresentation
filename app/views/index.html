@@ -6,18 +6,18 @@
         <title>Socket.IO Exposed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="components/reveal.js/css/reveal.min.css">
-        <link rel="stylesheet" href="components/reveal.js/css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="components/reveal.js/css/theme/sky.css" id="theme">
         
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
-                <section>
+                <section data-background="img/Slide1.jpg">
                     <h1>SOCKET.IO</h1>
                     <h2>http://10.98.110.134:3000/</h2>
                     </br></br><h5><a href="https://github.com/dcorns/exploreSocketIO">Git Hub Examples</a></h5>
                 </section>
-                <section id="s2">
+                <section id="s2" data-background="img/socket_am2.jpg">
                 <h1>What is socket.io?</h1>
                     <p class="fragment roll-in">"Socket.io enables real-time bidirectional event-based communications."</p>
                     <p class="fragment fade-in">"It works on every platform, browser or device, focusing equally on reliability and speed"</p>
@@ -25,65 +25,71 @@
                     <a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a>
                 </section>
 
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1 >Before Websocket</h1>
                     <h3 class="fragment roll-in">XMLHttpRequest</h3>
                     <a class="fragment fade-in" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">XMLHttpRequest details</a>
                     <h3 class="fragment roll-in">iframes</h3>
                     <a class="fragment fade-in" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">Using Iframes</a>
-                    <p class="fragment roll-in">long polling</br>(function poll(){</br>
-                        $.ajax({</br> url: "server", success: function(data){</br>
-                        //Update your dashboard gauge
-                        salesGauge.setValue(data.value);}</br>
-                        ,dataType: "json", complete: poll, timeout: 30000 });})();</p>
+                    <h3 class="fragment roll-in">long polling</h3>
                     <a class="fragment fade-in" href="http://techoctave.com/c7/posts/60-simple-long-polling-example-with-javascript-and-jquery">Polling explained</a>
                 </section>
-
-                <section>
+                <section data-background="img/socket_am2.jpg">
+                    <code>
+                        (function poll(){
+                          $.ajax({
+                            url: "server",
+                            success: function(data){
+                              salesGauge.setValue(data.value);
+                            },
+                            dataType: "json",
+                            complete: poll,
+                            timeout: 30000
+                          });
+                        })();</code>
+                </section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>The Websocket Way</h1>
                     <h3><a class="fragment fade-in" href="http://tools.ietf.org/html/rfc6455">RFC6455</a></h3>
                     <h3 class="fragment roll-in">HTTP Handshake</h3>
                     <h3 class="fragment roll-in">Frames</h3>
                 </section>
 
-                <section>
-                    <h1>Dependencies</h1>
-                    <h3 class="fragment roll-in">Engine.io</h3>
-                    <h3 class="fragment roll-in">Websocket</h3>
+                <section data-background="img/socket_am2.jpg">
+                    <h1>Engine.io</h1>
                 </section>
 
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Version 1.0 vrs 0.9</h1>
-                    <h3>Stability</h3>
-                    <h3>io.use()</h3>
-                    <h3>engine.IO</h3>
-                    <h3>binary support</h3>
-                    <h3>automated testing</h3>
+                    <h3 class="fragment roll-in">Stability</h3>
+                    <h3 class="fragment roll-in">io.use()</h3>
+                    <h3 class="fragment roll-in">engine.IO</h3>
+                    <h3 class="fragment roll-in">binary support</h3>
+                    <h3 class="fragment roll-in">automated testing</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Version 1.0 vrs 0.9</h1>
-                    <h3>Scalability</h3>
-                    <h3>Integration</h3>
-                    <h3>Debugging</h3>
-                    <h3>CDN Delivery</h3>
-                    <h3><a href="http://socket.io/blog/introducing-socket-io-1-0/">Socket.io V1.0</a></h3>
+                    <h3 class="fragment roll-in">Integration</h3>
+                    <h3 class="fragment roll-in">Debugging</h3>
+                    <h3 class="fragment roll-in">CDN Delivery</h3>
+                    <h3 class="fragment roll-in"><a href="http://socket.io/blog/introducing-socket-io-1-0/">Socket.io V1.0</a></h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>So Again what is socket.io really?</h1>
-                    <p>Sugar</p>
-                    <p>Abstraction</p>
-                    <p>Complexity</p>
-                    <p>Less Code</p>
+                    <p class="fragment roll-in">Sugar</p>
+                    <p class="fragment roll-in">Abstraction</p>
+                    <p class="fragment roll-in">Complexity</p>
+                    <p class="fragment roll-in">Less Code</p>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h4 class="fragment fade-in">A simple means of implementing the websocket IP protocol over TCP for true bidirectional, asynchronus communications between client and server</h4>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>So for what is it good?</h1>
                     <h3 class="fragment roll-in">Anything Realtime!</h3>
                     <h3 class="fragment roll-in">Client or Server</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Examples</h1>
                     <h4><a href="https://github.com/dcorns/exploreSocketIO">clone exploreSocketIO</a></h4>
                     <h3>nodeOnly</h3>
@@ -92,30 +98,31 @@
                     <h3>shutupAlready</h3>
                     <h3>realtimeUpdate</h3>
                     <h3>nameSpace</h3>
+                    <h3>bievents</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Server Setup</h1>
-                    <h3>var app = require('express')();</h3>
-                    <h3>var server = require('http').Server(app);</h3>
-                    <h3>var io = require('socket.io')(server);</h3>
-                    <h3>server.listen(<i>port</i>)</h3>
-                    <h3>app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
+                    <h3 class="fragment roll-in">var app = require('express')();</h3>
+                    <h3 class="fragment roll-in">var server = require('http').Server(app);</h3>
+                    <h3 class="fragment roll-in">var io = require('socket.io')(server);</h3>
+                    <h3 class="fragment roll-in">server.listen(<i>port</i>)</h3>
+                    <h3 class="fragment roll-in">app.get('/', function(req, res{</br>res.sendfile(__dirname + '<i>html</i>')});</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Client Setup</h1>
-                    <h3>script src="/socket.io/socket.io.js"</h3>
-                    <h3>script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
-                    <h3>var socket = io();</h3>
-                    <h3>var socket = io(<i>url</i>)</h3>
+                    <h3 class="fragment roll-in">script src="/socket.io/socket.io.js"</h3>
+                    <h3 class="fragment roll-in">script src="https://cdn.socket.io/socket.io-1.0.0.js"</h3>
+                    <h3 class="fragment roll-in">var socket = io();</h3>
+                    <h3 class="fragment roll-in">var socket = io(<i>url</i>)</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Connection Proccess</h1>
-                    <h3>Client sends GET request</h3>
-                    <h3>Server sends script</h3>
-                    <h3>Handshake</h3>
-                    <h3>Websocket Open</h3>
+                    <h3 class="fragment roll-in">Client sends GET request</h3>
+                    <h3 class="fragment roll-in">Server sends script</h3>
+                    <h3 class="fragment roll-in">Handshake</h3>
+                    <h3 class="fragment roll-in">Websocket Open</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Events</h1>
                     <h3>error</h3>
                     <h3>connect</h3>
@@ -124,54 +131,26 @@
                     <h3>message</h3>
                     <h3>Custom Events</h3>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Events Listener/Handler</h1>
                     <h3>on</h3>
                     <h4>socket.on('<i>eventname</i>',function(){</br>
                     });
                     </h4>
                 </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>Custom Events</h1>
-                    <h3>emit</h3>
-                    <h4>socket.emit('<i>eventname</i>',{});
+                    <h2 class="fragment roll-in">Triggers</h2>
+                    <h4 class="fragment roll-in">socket.emit('<i>eventname</i>',{});
                     </h4>
-                    <h3>broadcast</h3>
-                    <h4>socket.broadcast.emit('eventname',{});</h4>
+                    <h4 class="fragment roll-in">socket.broadcast.emit('eventname',{});</h4>
                 </section>
-                <section>
-                    <h1>Server API</h1>
-                    <h3>Server Object</h3>
-                    <h3>Namespace</h3>
-                    <h3>Socket</h3>
-                    <h3>Client</h3>
-                </section>
-                <section>
-                    <h1>Server Object</h1>
-                    <h3>serveClient</h3>
-                    <h3>path</h3>
-                    <h3>Custom Event</h3>
-                </section>
-                <section>
-                    <h1>Client API</h1>
-                    <h3>IO</h3>
-                    <h3>Manager</h3>
-                    <h3>Socket</h3>
-                </section>
-
-                <section>
-                    <h1>Client</h1>
-                    <h3>Client</h3>
-                    <h3>Disconnected</h3>
-                    <h3>Custom Event</h3>
-                </section>
-                <section>
+                <section data-background="img/socket_am2.jpg">
                     <h1>NameSpacing</h1>
                     <h3>Default /</h3>
                     <h3>Custom Namespacing</h3>
-                    <h3>Custom Event</h3>
                 </section>
-                <section>
+                <section data-background="img/LastSlide.jpg">
                     <h1>Lab: Chat Room</h1>
                     <a class="fragment fade-in" href="https://github.com/dcorns/socketIOPresentaion">This presentation was done using express, reveal and socket.io</a>
                     <a class="fragment roll-in" href="hrrps://github.com/dcorns/simplechat">Working Chat Example</a>

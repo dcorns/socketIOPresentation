@@ -127,18 +127,10 @@
         <section>
             <h1>Events</h1>
             <p>error -on an error parameter {error data}</p>
-            <p>connection -server side after connected</p>
-            <p>message -used for chat</p>
-            <p>disconnected</p>
-            <p>Custom Events</p>
-        </section>
-        <section>
-            <h1>Events Listener/Handler</h1>
-            <p>error -on an error parameter {error data}</p>
             <p>connect -on client connect, fires</p>
-            <p>connection -on server connect, fires</p>
+            <p>connection -server side after connected</p>
             <p>message -not sure but need to use it so chat works correctly</p>
-            <p>disconnected -fires on server when a client disconnects</p>
+            <p>disconnected - others not discussed 'open''close''retry''reconnect'</p>
             <p>Custom Events</p>
         </section>
         <section>
@@ -147,6 +139,14 @@
             <h4>socket.on('<i>eventname</i>',function(){</br>
                 });
             </h4>
+        </section>
+        <section>
+            <h1>Custom Events</h1>
+            <h3>emit</h3>
+            <h4>socket.emit('<i>eventname</i>',{});
+            </h4>
+
+            <h4>socket.broadcast.emit('eventname',{});</h4>
         </section>
     </div>
 </div>
