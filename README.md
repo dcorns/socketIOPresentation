@@ -11,4 +11,4 @@ This app can be used to just project the slides, or audience participants can lo
 index.html and master.html are stored in /app/views
 images and other resourses are stored in /public
 
-To start the presentation: node server
+To start the presentation: node app
